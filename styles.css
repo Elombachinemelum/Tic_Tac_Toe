@@ -4,6 +4,7 @@
 
 body{
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 :root{
@@ -15,6 +16,7 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1rem;
@@ -154,4 +156,9 @@ body{
 .win-block button:hover{
     background-color:rgba(0, 0, 0, .85);
     color: white;
+}
+
+.message{
+    padding : 0 2rem;
+    text-align: center;
 }
