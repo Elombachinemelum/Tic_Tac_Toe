@@ -1,0 +1,157 @@
+*, ::after, ::before{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
+:root{
+    font-size: 16px;
+    
+}
+
+.page{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    min-width: 200px;
+    max-width: 400px;
+}
+
+.cell{
+    border: 2px solid black;
+    aspect-ratio: 1;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell:first-child, .cell:nth-child(2), .cell:nth-child(3){
+    border-top: 0;
+}
+
+.cell:nth-child(3n + 1){
+    border-left: 0;
+}
+
+.cell:nth-child(3n){
+    border-right : 0;
+}
+
+.cell:last-child, .cell:nth-child(7), .cell:nth-child(8){
+    border-bottom: 0;
+}
+
+/* inner display section */
+.cell.x::after, 
+.cell.x::before{
+    content: "";
+    width: 20%;
+    background-color: rgba(0, 0, 0, 1);
+    height: 90%;
+    transform: rotate(45deg);
+    position:absolute;                          
+}
+
+.cell.x::before{
+    transform: rotate(-45deg);
+}
+
+.container.x .cell:hover:not(.x, .circle)::after, 
+.container.x .cell:hover:not(.x, .circle)::before{
+    content: "";
+    width: 20%;
+    background-color: lightgrey;
+    height: 90%;
+    transform: rotate(45deg);
+    position:absolute; 
+}
+
+.container.x .cell:hover:not(.x, .circle)::before{
+    transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after{
+    content: "";
+    width: 90%;
+    aspect-ratio: 1;
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.cell.circle::after{
+    width: 60%;
+    background-color: white;
+}
+
+.container.circle .cell:hover:not(.x, .circle)::before,
+.container.circle .cell:hover:not(.x, .circle)::after{
+    content: "";
+    width: 90%;
+    aspect-ratio: 1;
+    background-color: lightgrey;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.container.circle .cell:hover:not(.x, .circle)::after{
+    width: 60%;
+    background-color: white;
+}
+
+.win{
+    position: fixed;
+    display : none;
+    top: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .85);
+}
+
+.show{
+    display : flex;
+}
+
+.win-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.win-block P{
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.win-block button{
+    display: inline-block;
+    border: 0;
+    border-radius: 5px;
+    font-size: 2rem;
+    padding: .2rem 1rem;
+    cursor: pointer;
+}
+
+.win-block button:hover{
+    background-color:rgba(0, 0, 0, .85);
+    color: white;
+}
