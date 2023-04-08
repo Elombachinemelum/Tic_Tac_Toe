@@ -1,10 +1,16 @@
 const cells = document.querySelectorAll("[data-cell]");
 const container = document.getElementById("container");
 let xTurn;
+let newUser = true;
+let playerName = "";
 const classes = ["x", "circle"];
 const winningDisplay = document.getElementById("winning-text");
 const winningBlock = document.getElementById("win-block");
 const restartButton = document.getElementById("restart");
+const message = document.getElementById("message");
+const intro = document.getElementById("intro");
+const input = document.querySelector("[data-input]");
+const button = document.getElementById("submit");
 const winningCombinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -16,15 +22,27 @@ const winningCombinations = [
   [2, 4, 6],
 ];
 
+const tray = [
+  `Hey, Tray. Always remember you can do anything you put your mind to. You just have to focus. <br>❤️`,
+  `Welcome back, Tray🤗`,
+];
+
 const startGame = () => {
   xTurn = true;
   container.className = "container x";
+  if (newUser) {
+    container.classList.add("hidden");
+    intro.classList.remove("hidden");
+    message.classList.add("hidden");
+  } else message.classList.remove("hidden");
+
   cells.forEach((cell) => {
     cell.className = "cell";
     cell.removeEventListener("click", handleClick);
     cell.addEventListener("click", handleClick, { once: true });
   });
   winningBlock.classList.remove("show");
+  newUser = false;
 };
 startGame();
 
@@ -75,8 +93,27 @@ function handleClick(evt) {
   }
 }
 
-cells.forEach((cell) =>
-  cell.addEventListener("click", handleClick, { once: true })
-);
-
 restartButton.onclick = () => startGame();
+input.oninput = (evt) => {
+  playerName = evt.target.value;
+};
+
+button.onclick = () => {
+  enteredName = playerName.toLocaleLowerCase();
+  if (enteredName === "tray" || enteredName === "tracey") {
+    message.innerHTML = tray[1];
+  } else {
+    message.innerText = `Hello${
+      enteredName
+        ? ", " +
+          enteredName.slice(0, 1).toUpperCase() +
+          enteredName.slice(1).toLocaleLowerCase() +
+          "."
+        : "."
+    }`;
+  }
+
+  container.classList.remove("hidden");
+  message.classList.remove("hidden");
+  intro.classList.add("hidden");
+};

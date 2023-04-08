@@ -7,9 +7,22 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+input, select{
+    font-family: inherit;
+}
+
 :root{
     font-size: 16px;
-    
+    --clr-dark : rgba(0, 0, 0, .8)
+}
+
+/* custom classes */
+.show{
+    display : flex !important;
+}
+
+.hidden{
+    display: none !important;
 }
 
 .page{
@@ -21,6 +34,60 @@ body{
     align-items: center;
     padding: 1rem;
     position: relative;
+}
+
+label{
+    font-size: 1.5rem;
+    padding-bottom: .8rem;
+    display: inline;
+    text-align: center;
+}
+
+input{
+    text-align: center;
+    display: inline-block;
+    border: 0;
+    border: 2px solid var(--clr-dark);
+    border-radius: 5px;
+    padding: .5rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+input + button{
+    display: inline-block;
+    border: 0;
+    border-radius: 5px;
+    border : 1px solid transparent;
+    font-size: 1.5rem;
+    padding: .4rem 1.8rem;
+    cursor: pointer;
+    color : #ffff;
+    background-color: rgba(0, 0, 0, .85);
+    min-width: 10rem;
+    margin-top : .7rem;
+}
+
+input + button:hover{
+    background-color: white;
+    color:  rgba(0, 0, 0, .85);
+    border : 1px solid rgba(0, 0, 0, .85);
+}
+
+input + button:active{
+    background-color: white;
+    color:  rgba(0, 0, 0, .85);
+    border : 1px solid rgba(0, 0, 0, .85);
+}
+
+input:focus{
+    outline: none;
 }
 
 .container{
@@ -128,9 +195,7 @@ body{
     background-color: rgba(0, 0, 0, .85);
 }
 
-.show{
-    display : flex;
-}
+
 
 .win-block{
     display: flex;
@@ -161,4 +226,12 @@ body{
 .message{
     padding : 0 2rem;
     text-align: center;
+    margin-bottom: 3rem;
+    font-weight: bold ;
+}
+
+@media (min-width : 400px){
+    .message{
+        font-size : 1.5rem;
+    }
 }
