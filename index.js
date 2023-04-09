@@ -100,7 +100,8 @@ input.oninput = (evt) => {
 
 button.onclick = () => {
   enteredName = playerName.toLocaleLowerCase();
-  if (enteredName === "tray" || enteredName === "tracey") {
+  const hasAMatch = enteredName.includes("tray") && !enteredName.includes(" ");
+  if (enteredName === "tray" || enteredName === "tracey" || hasAMatch) {
     message.innerHTML = tray[1];
   } else {
     message.innerText = `Hello${

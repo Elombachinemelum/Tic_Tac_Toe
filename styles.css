@@ -54,6 +54,10 @@ input{
     font-weight: bold;
 }
 
+input::placeholder{
+    opacity: .7;
+}
+
 .intro{
     display: flex;
     flex-direction: column;
